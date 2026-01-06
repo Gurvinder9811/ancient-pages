@@ -1,15 +1,16 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Home', href: '#' },
-    { label: 'Articles', href: '#articles' },
-    { label: 'Topics', href: '#topics' },
-    { label: 'Authors', href: '#authors' },
-    { label: 'About', href: '#about' },
+    { label: 'Home', href: '/' },
+    { label: 'Articles', href: '/articles' },
+    { label: 'Topics', href: '/#topics' },
+    { label: 'Authors', href: '/#authors' },
+    { label: 'About', href: '/#about' },
   ];
 
   return (
@@ -17,22 +18,22 @@ const Header = () => {
       <div className="container mx-auto px-6 lg:px-12">
         <nav className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <span className="font-serif text-xl md:text-2xl font-semibold text-ink tracking-tight">
               The Scholarly
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center gap-8 lg:gap-12">
             {navLinks.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
+                <Link
+                  to={link.href}
                   className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -58,13 +59,13 @@ const Header = () => {
             <ul className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="block py-2 text-foreground hover:text-primary transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
               <li className="pt-2">
