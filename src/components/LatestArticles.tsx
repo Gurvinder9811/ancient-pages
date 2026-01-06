@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 interface Article {
@@ -91,9 +92,10 @@ const LatestArticles = () => {
         {/* Articles Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {articles.map((article, index) => (
-            <article 
+            <Link 
+              to={`/article/${article.id}`}
               key={article.id} 
-              className="group cursor-pointer hover-lift"
+              className="group cursor-pointer hover-lift block"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Image */}
@@ -126,7 +128,7 @@ const LatestArticles = () => {
                   <span>{article.readTime}</span>
                 </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
 
