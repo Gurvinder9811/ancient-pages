@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { TrendingUp } from 'lucide-react';
 
 interface TrendingArticle {
@@ -111,9 +112,9 @@ const MostViewedAuthors = () => {
 
             <div className="space-y-6">
               {topAuthors.map((author) => (
-                <a
+                <Link
                   key={author.id}
-                  href={`#author-${author.id}`}
+                  to={`/author/${author.id}`}
                   className="flex items-center gap-5 p-4 -mx-4 rounded-sm cursor-pointer hover:bg-parchment-dark/30 transition-colors duration-200 group"
                 >
                   <img
@@ -132,10 +133,10 @@ const MostViewedAuthors = () => {
                       {author.articles} articles published
                     </p>
                   </div>
-                  <button className="px-4 py-2 border border-primary text-primary text-sm font-medium rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-primary hover:text-primary-foreground">
-                    Follow
-                  </button>
-                </a>
+                  <span className="px-4 py-2 border border-primary text-primary text-sm font-medium rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-primary hover:text-primary-foreground">
+                    View Profile
+                  </span>
+                </Link>
               ))}
             </div>
           </div>
